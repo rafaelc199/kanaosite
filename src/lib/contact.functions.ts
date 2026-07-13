@@ -21,7 +21,7 @@ function escapeHtml(s: string) {
 }
 
 export const sendContactMessage = createServerFn({ method: "POST" })
-  .inputValidator((data: unknown) => ContactSchema.parse(data))
+  .validator((data: unknown) => ContactSchema.parse(data))
   .handler(async ({ data }) => {
     const RESEND_API_KEY = process.env.RESEND_API_KEY_OWN;
     if (!RESEND_API_KEY) {

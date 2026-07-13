@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+# Sitemap descoberta automática
+# Substituir pelo domínio final quando publicado:
+# Sitemap: https://kanao.pt/sitemap.xml
