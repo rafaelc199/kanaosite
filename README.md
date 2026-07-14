@@ -24,7 +24,7 @@ npm run build
 
 ## Imagens
 
-Organize cada galeria numa pasta própria em `public/images/<projeto>/` e referencie-a em `src/content/projects.ts` com caminhos absolutos, por exemplo `/images/projeto/foto.jpg`. Não são usados pointers JSON nem serviços do Lovable.
+Organize cada galeria numa pasta própria em `public/images/<projeto>/` e referencie-a em `src/content/projects.ts` com caminhos absolutos, por exemplo `/images/projeto/foto.jpg`.
 
 ## Deploy
 

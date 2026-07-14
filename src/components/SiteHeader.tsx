@@ -16,12 +16,12 @@ export function SiteHeader() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/85 backdrop-blur-sm border-b border-border/60">
       <div className="mx-auto max-w-[1600px] px-6 md:px-10 h-16 md:h-20 flex items-center justify-between">
-        <Link
-          to="/"
-          style={{ fontFamily: "var(--font-wordmark)" }}
-          className="text-xl md:text-2xl tracking-[0.02em] font-medium lowercase"
-        >
-          {brand.name.toLowerCase()} interior design
+        <Link to="/" aria-label={`${brand.name} — Início`} className="shrink-0">
+          <img
+            src="/images/brand/kanao-logo.svg"
+            alt="Kanao Interior Design"
+            className="block h-8 w-auto md:h-11 text-foreground"
+          />
         </Link>
 
         <nav className="hidden md:flex items-center gap-8 text-[11px] uppercase tracking-[0.18em]">
