@@ -29,7 +29,3 @@ Organize cada galeria numa pasta própria em `public/images/<projeto>/` e refere
 ## Deploy
 
 A configuração do TanStack Start usa o preset Nitro `vercel`. Configure as variáveis de ambiente do Resend e Analytics no projeto da Vercel.
-
-## Production URL
-
-The canonical production URL is `https://kanaosite.vercel.app`. Update `src/lib/seo.ts` if a custom domain is introduced.

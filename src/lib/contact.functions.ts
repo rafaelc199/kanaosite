@@ -5,7 +5,6 @@ const ContactSchema = z.object({
   name: z.string().trim().min(1, "Nome obrigatório").max(100),
   email: z.string().trim().email("Email inválido").max(255),
   message: z.string().trim().min(1, "Mensagem obrigatória").max(2000),
-  website: z.string().max(0).optional().default(""),
 });
 
 const TO_EMAIL = "kanao.interiordesign@gmail.com";
@@ -24,8 +23,6 @@ function escapeHtml(s: string) {
 export const sendContactMessage = createServerFn({ method: "POST" })
   .validator((data: unknown) => ContactSchema.parse(data))
   .handler(async ({ data }) => {
-    if (data.website) return { ok: true as const };
-
     const RESEND_API_KEY = process.env.RESEND_API_KEY_OWN;
     if (!RESEND_API_KEY) {
       throw new Error("Email service not configured");

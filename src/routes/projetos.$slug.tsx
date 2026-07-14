@@ -4,8 +4,6 @@ import { useLang } from "../lib/lang";
 import { useState } from "react";
 import { Lightbox } from "../components/Lightbox";
 
-import { seoHead } from "../lib/seo";
-
 export const Route = createFileRoute("/projetos/$slug")({
   loader: ({ params }) => {
     const project = projects.find((p) => p.slug === params.slug);
@@ -13,16 +11,17 @@ export const Route = createFileRoute("/projetos/$slug")({
     return { project };
   },
   head: ({ loaderData }) => {
-    const project = loaderData?.project;
-    const title = project ? `${project.title.pt} — Kanao` : "Projeto — Kanao";
-    const description = project?.description.pt ?? "Projeto de design de interiores Kanao.";
-    return seoHead({
-      title,
-      description,
-      path: project ? `/projetos/${project.slug}` : "/projetos",
-      image: project?.images[0],
-      type: "article",
-    });
+    const p = loaderData?.project;
+    const title = p ? `${p.title.pt} — Kanao` : "Projeto — Kanao";
+    return {
+      meta: [
+        { title },
+        { name: "description", content: p?.description.pt ?? "" },
+        { property: "og:title", content: title },
+        { property: "og:description", content: p?.description.pt ?? "" },
+        { property: "og:image", content: p?.images[0] ?? "" },
+      ],
+    };
   },
   notFoundComponent: () => (
     <div className="mx-auto max-w-3xl px-6 py-32 text-center">
@@ -80,10 +79,10 @@ function ProjectDetail() {
       {/* COVER */}
       <div className="mx-auto max-w-[1600px] px-6 md:px-10">
         <img
-          decoding="async"
           src={project.images[0]}
           alt={t(project.title)}
           fetchPriority="high"
+          decoding="async"
           onClick={() => setLightboxIndex(0)}
           className="w-full h-[70vh] md:h-[90vh] object-cover cursor-zoom-in"
         />

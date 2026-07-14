@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://kanaosite.vercel.app/sitemap.xml
+# Sitemap descoberta automática
+# Substituir pelo domínio final quando publicado:
+# Sitemap: https://kanao.pt/sitemap.xml

@@ -24,17 +24,13 @@ export function SiteHeader() {
           {brand.name.toLowerCase()} interior design
         </Link>
 
-        <nav
-          aria-label={t({ pt: "Navegação principal", en: "Main navigation" })}
-          className="hidden md:flex items-center gap-8 text-[11px] uppercase tracking-[0.18em]"
-        >
+        <nav className="hidden md:flex items-center gap-8 text-[11px] uppercase tracking-[0.18em]">
           {links.map((l) => {
             const active = l.to === "/" ? pathname === "/" : pathname.startsWith(l.to);
             return (
               <Link
                 key={l.to}
                 to={l.to}
-                aria-current={active ? "page" : undefined}
                 className={`transition-colors hover:text-foreground ${active ? "text-foreground" : "text-muted-foreground"}`}
               >
                 {t(l.label)}
@@ -45,9 +41,6 @@ export function SiteHeader() {
 
         <div className="flex items-center gap-2 text-[11px] uppercase tracking-[0.18em]">
           <button
-            type="button"
-            aria-label="Português"
-            aria-pressed={lang === "pt"}
             onClick={() => setLang("pt")}
             className={
               lang === "pt" ? "text-foreground" : "text-muted-foreground hover:text-foreground"
@@ -57,9 +50,6 @@ export function SiteHeader() {
           </button>
           <span className="text-muted-foreground">/</span>
           <button
-            type="button"
-            aria-label="English"
-            aria-pressed={lang === "en"}
             onClick={() => setLang("en")}
             className={
               lang === "en" ? "text-foreground" : "text-muted-foreground hover:text-foreground"
@@ -71,17 +61,13 @@ export function SiteHeader() {
       </div>
 
       {/* mobile nav */}
-      <nav
-        aria-label={t({ pt: "Navegação móvel", en: "Mobile navigation" })}
-        className="md:hidden flex justify-center gap-5 pb-3 text-[10px] uppercase tracking-[0.16em]"
-      >
+      <nav className="md:hidden flex justify-center gap-5 pb-3 text-[10px] uppercase tracking-[0.16em]">
         {links.map((l) => {
           const active = l.to === "/" ? pathname === "/" : pathname.startsWith(l.to);
           return (
             <Link
               key={l.to}
               to={l.to}
-              aria-current={active ? "page" : undefined}
               className={active ? "text-foreground" : "text-muted-foreground"}
             >
               {t(l.label)}
