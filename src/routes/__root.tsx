@@ -16,6 +16,8 @@ import { SiteHeader } from "../components/SiteHeader";
 import { SiteFooter } from "../components/SiteFooter";
 import { CookieBanner } from "../components/CookieBanner";
 
+import { seoHead } from "../lib/seo";
+
 function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -82,7 +84,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       description:
         "Estúdio de design de interiores. Projetos residenciais e comerciais com foco em luz, matéria e proporção.",
       email: "kanao.interiordesign@gmail.com",
-      telephone: "+351914448002",
+      telephone: "+351919933607",
       address: {
         "@type": "PostalAddress",
         addressLocality: "Marco de Canaveses",
@@ -93,23 +95,22 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       sameAs: ["https://instagram.com/kanao.interiordesign"],
     };
     return {
+      ...seoHead({
+        title: "Kanao — Design de Interiores",
+        description:
+          "Estúdio de design de interiores Kanao. Projetos residenciais e comerciais com foco em luz, matéria e proporção.",
+        path: "/",
+      }),
       meta: [
         { charSet: "utf-8" },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
-        { title: "Kanao — Design de Interiores" },
-        {
-          name: "description",
-          content:
-            "Estúdio de design de interiores Kanao. Projetos residenciais e comerciais com foco em luz, matéria e proporção.",
-        },
         { name: "author", content: "Kanao" },
-        { property: "og:title", content: "Kanao — Design de Interiores" },
-        {
-          property: "og:description",
-          content: "Estúdio de design de interiores. Projetos residenciais e comerciais.",
-        },
-        { property: "og:type", content: "website" },
-        { name: "twitter:card", content: "summary" },
+        ...seoHead({
+          title: "Kanao — Design de Interiores",
+          description:
+            "Estúdio de design de interiores Kanao. Projetos residenciais e comerciais com foco em luz, matéria e proporção.",
+          path: "/",
+        }).meta,
       ],
       links: [
         {
@@ -144,11 +145,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="pt">
       <head>
         <HeadContent />
       </head>
       <body>
+        <a href="#conteudo" className="skip-link">
+          Saltar para o conteúdo
+        </a>
         {children}
         <Scripts />
       </body>
@@ -164,7 +168,7 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <LangProvider>
         <SiteHeader />
-        <main className="pt-28 md:pt-20">
+        <main id="conteudo" tabIndex={-1} className="pt-28 md:pt-20">
           <div key={pathname} className="animate-fade-in">
             <Outlet />
           </div>

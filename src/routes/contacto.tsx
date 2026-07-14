@@ -5,18 +5,15 @@ import { useLang } from "../lib/lang";
 import { useServerFn } from "@tanstack/react-start";
 import { sendContactMessage } from "../lib/contact.functions";
 
+import { seoHead } from "../lib/seo";
+
 export const Route = createFileRoute("/contacto")({
-  head: () => ({
-    meta: [
-      { title: "Contacto — Kanao" },
-      {
-        name: "description",
-        content: "Fale connosco sobre o seu projeto de design de interiores.",
-      },
-      { property: "og:title", content: "Contacto — Kanao" },
-      { property: "og:description", content: "Fale connosco sobre o seu projeto." },
-    ],
-  }),
+  head: () =>
+    seoHead({
+      title: "Contacto — Kanao",
+      description: "Fale connosco sobre o seu projeto de design de interiores.",
+      path: "/contacto",
+    }),
   component: ContactPage,
 });
 
@@ -50,7 +47,9 @@ function ContactPage() {
             <p className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground mb-2">
               {t({ pt: "Telefone", en: "Phone" })}
             </p>
-            <p>{brand.phone}</p>
+            <a href={`tel:${brand.phone.replace(/\s/g, "")}`} className="hover:opacity-60">
+              {brand.phone}
+            </a>
           </div>
           <div>
             <p className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground mb-2">
@@ -81,6 +80,7 @@ function ContactPage() {
                   name: String(fd.get("name") ?? ""),
                   email: String(fd.get("email") ?? ""),
                   message: String(fd.get("message") ?? ""),
+                  website: String(fd.get("website") ?? ""),
                 },
               });
               setStatus("sent");
@@ -97,15 +97,41 @@ function ContactPage() {
             }
           }}
           className="md:col-span-8 space-y-8"
+          aria-busy={status === "sending"}
         >
-          <Field name="name" label={t(contact.form.name)} required />
-          <Field name="email" type="email" label={t(contact.form.email)} required />
-          <Field name="message" label={t(contact.form.message)} textarea required />
+          <div className="absolute -left-[9999px]" aria-hidden="true">
+            <label>
+              Website
+              <input name="website" type="text" tabIndex={-1} autoComplete="off" />
+            </label>
+          </div>
+          <Field
+            name="name"
+            autoComplete="name"
+            maxLength={100}
+            label={t(contact.form.name)}
+            required
+          />
+          <Field
+            name="email"
+            type="email"
+            autoComplete="email"
+            maxLength={255}
+            label={t(contact.form.email)}
+            required
+          />
+          <Field
+            name="message"
+            maxLength={2000}
+            label={t(contact.form.message)}
+            textarea
+            required
+          />
 
           <button
             type="submit"
             disabled={status === "sending"}
-            className="text-[11px] uppercase tracking-[0.18em] border-b border-foreground pb-1 hover:opacity-60"
+            className="text-[11px] uppercase tracking-[0.18em] border-b border-foreground pb-1 hover:opacity-60 disabled:cursor-wait disabled:opacity-50"
           >
             {status === "sending"
               ? t({ pt: "A enviar…", en: "Sending…" })
@@ -113,9 +139,15 @@ function ContactPage() {
           </button>
 
           {status === "sent" && (
-            <p className="text-sm text-muted-foreground">{t(contact.form.sent)}</p>
+            <p role="status" aria-live="polite" className="text-sm text-muted-foreground">
+              {t(contact.form.sent)}
+            </p>
           )}
-          {status === "error" && errorMsg && <p className="text-sm text-destructive">{errorMsg}</p>}
+          {status === "error" && errorMsg && (
+            <p role="alert" className="text-sm text-destructive">
+              {errorMsg}
+            </p>
+          )}
         </form>
       </div>
     </section>
@@ -128,12 +160,16 @@ function Field({
   type = "text",
   textarea = false,
   required = false,
+  autoComplete,
+  maxLength,
 }: {
   name: string;
   label: string;
   type?: string;
   textarea?: boolean;
   required?: boolean;
+  autoComplete?: string;
+  maxLength?: number;
 }) {
   const cls =
     "block w-full bg-transparent border-b border-border focus:border-foreground outline-none py-3 text-base transition-colors";
@@ -141,9 +177,22 @@ function Field({
     <label className="block">
       <span className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground">{label}</span>
       {textarea ? (
-        <textarea name={name} required={required} rows={5} className={`${cls} resize-none mt-1`} />
+        <textarea
+          name={name}
+          required={required}
+          maxLength={maxLength}
+          rows={5}
+          className={`${cls} resize-none mt-1`}
+        />
       ) : (
-        <input name={name} type={type} required={required} className={`${cls} mt-1`} />
+        <input
+          name={name}
+          type={type}
+          required={required}
+          autoComplete={autoComplete}
+          maxLength={maxLength}
+          className={`${cls} mt-1`}
+        />
       )}
     </label>
   );

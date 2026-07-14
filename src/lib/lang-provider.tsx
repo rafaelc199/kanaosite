@@ -10,6 +10,10 @@ export function LangProvider({ children }: { children: ReactNode }) {
     if (saved === "pt" || saved === "en") setLangState(saved);
   }, []);
 
+  useEffect(() => {
+    document.documentElement.lang = lang;
+  }, [lang]);
+
   const setLang = (nextLang: Lang) => {
     setLangState(nextLang);
     localStorage.setItem("kanao-lang", nextLang);

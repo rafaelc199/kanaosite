@@ -2,18 +2,16 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { about, projects } from "../content/site";
 import { useLang } from "../lib/lang";
 
+import { seoHead } from "../lib/seo";
+
 export const Route = createFileRoute("/estudio")({
-  head: () => ({
-    meta: [
-      { title: "Estúdio — Kanao" },
-      {
-        name: "description",
-        content: "Sobre o estúdio Kanao — abordagem ao design de interiores.",
-      },
-      { property: "og:title", content: "Estúdio — Kanao" },
-      { property: "og:description", content: "Sobre o estúdio Kanao." },
-    ],
-  }),
+  head: () =>
+    seoHead({
+      title: "Estúdio — Kanao",
+      description: "Conheça a abordagem do estúdio Kanao ao design de interiores.",
+      path: "/estudio",
+      image: projects[1]?.images[0] ?? projects[0]?.images[0],
+    }),
   component: About,
 });
 
@@ -35,6 +33,8 @@ function About() {
 
       <section className="mx-auto max-w-[1400px] px-6 md:px-10">
         <img
+          decoding="async"
+          fetchPriority="high"
           src={projects[1]?.images[0] ?? projects[0].images[0]}
           alt=""
           className="w-full h-[60vh] md:h-[85vh] object-cover"

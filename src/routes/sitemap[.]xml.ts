@@ -2,8 +2,9 @@ import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 import { projects } from "../content/site";
 
-// TODO: definir domínio final quando publicado (ex.: "https://kanao.pt")
-const BASE_URL = "";
+import { SITE_URL } from "../lib/seo";
+
+const BASE_URL = SITE_URL;
 
 interface SitemapEntry {
   path: string;

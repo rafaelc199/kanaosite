@@ -3,22 +3,17 @@ import { Link } from "@tanstack/react-router";
 import { home, projects, phases } from "../content/site";
 import { useLang } from "../lib/lang";
 
+import { seoHead } from "../lib/seo";
+
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Kanao — Design de Interiores" },
-      {
-        name: "description",
-        content: "Estúdio de design de interiores. Projetos residenciais e comerciais em Portugal.",
-      },
-      { property: "og:title", content: "Kanao — Design de Interiores" },
-      {
-        property: "og:description",
-        content: "Estúdio de design de interiores. Projetos residenciais e comerciais.",
-      },
-      { property: "og:image", content: projects[0]?.images[0] ?? "" },
-    ],
-  }),
+  head: () =>
+    seoHead({
+      title: "Kanao — Design de Interiores",
+      description:
+        "Estúdio de design de interiores. Projetos residenciais e comerciais em Portugal.",
+      path: "/",
+      image: projects[0]?.images[0],
+    }),
   component: Index,
 });
 
@@ -57,6 +52,8 @@ function Index() {
       {/* HERO IMAGE */}
       <section className="mx-auto max-w-[1600px] px-6 md:px-10">
         <img
+          decoding="async"
+          fetchPriority="high"
           src={projects[0].images[0]}
           alt={t(projects[0].title)}
           className="w-full h-[60vh] md:h-[85vh] object-cover"
@@ -109,6 +106,8 @@ function Index() {
           >
             <div className="overflow-hidden">
               <img
+                decoding="async"
+                loading="lazy"
                 src={p.images[0]}
                 alt={p.title[lang]}
                 className="w-full h-[55vh] md:h-[80vh] object-cover transition-transform duration-[1200ms] group-hover:scale-[1.02]"

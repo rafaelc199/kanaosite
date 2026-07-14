@@ -1,1 +1,0 @@
-import{d as e}from"./index-oVuOY4jK.js";var t=e(),n=({error:e})=>(0,t.jsx)(`div`,{className:`mx-auto max-w-3xl px-6 py-32 text-center`,children:(0,t.jsx)(`p`,{children:e.message})});export{n as errorComponent};

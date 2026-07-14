@@ -2,18 +2,16 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { projects } from "../content/site";
 import { useLang } from "../lib/lang";
 
+import { seoHead } from "../lib/seo";
+
 export const Route = createFileRoute("/projetos/")({
-  head: () => ({
-    meta: [
-      { title: "Projetos — Kanao" },
-      {
-        name: "description",
-        content: "Portfólio de projetos de design de interiores do estúdio Kanao.",
-      },
-      { property: "og:title", content: "Projetos — Kanao" },
-      { property: "og:description", content: "Portfólio de projetos de design de interiores." },
-    ],
-  }),
+  head: () =>
+    seoHead({
+      title: "Projetos — Kanao",
+      description: "Portfólio de projetos de design de interiores do estúdio Kanao.",
+      path: "/projetos",
+      image: projects[0]?.images[0],
+    }),
   component: ProjectsPage,
 });
 
@@ -40,6 +38,9 @@ function ProjectsPage() {
           >
             <div className="relative overflow-hidden">
               <img
+                decoding="async"
+                loading={i < 2 ? "eager" : "lazy"}
+                fetchPriority={i === 0 ? "high" : "auto"}
                 src={p.images[0]}
                 alt={t(p.title)}
                 className="w-full h-[55vh] md:h-[70vh] object-cover transition-transform duration-[1200ms] group-hover:scale-[1.05]"

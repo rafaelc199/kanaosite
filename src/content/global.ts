@@ -7,7 +7,7 @@ export const brand = {
     en: "Interior Design Studio",
   },
   email: "kanao.interiordesign@gmail.com",
-  phone: "+351 919 933 607",
+  phone: "+351 914 448 002",
   address: {
     pt: "Marco de Canaveses, Porto, Portugal",
     en: "Marco de Canaveses, Porto, Portugal",
@@ -91,9 +91,10 @@ export const about = {
       "Mais do que projetar, procuramos criar espaços com caráter, onde cada escolha contribui para uma experiência autêntica e intemporal.",
     ],
     en: [
-      "Founded in 2024, Kanao was born from the desire to create interiors that endure — spaces where form serves daily life and matter tells a story.",
-      "Each project begins with careful listening. We seek to understand the place, the routines and the aspirations of those who will inhabit it before proposing any line.",
-      "We follow the entire process, from the first sketch to the handover, with a multidisciplinary team and a network of trusted artisans and suppliers.",
+      "At KANAO Studio, we believe a well-designed space goes far beyond what is seen — it should be a sensory experience that reflects the way it is conceived and lived.",
+      "Every project begins with listening, with each client's vision and way of living.",
+      "We create interiors revealed through light, materiality, proportion and detail, where every element is carefully selected to achieve a balance between design and functionality.",
+      "More than designing, we seek to create spaces with character, where every choice contributes to an authentic and timeless experience.",
     ],
   },
 };
@@ -154,5 +155,5 @@ export const contact = {
 // =====================================================================
 // PROJETOS — adicione/remova/edite à vontade.
 // Para usar as suas fotos: coloque-as em /public/projects/<slug>/ e
-// referencie como "/projects/<slug>/01.jpg"
+// referencie como "/images/<projeto>/01.webp"
 // =====================================================================
