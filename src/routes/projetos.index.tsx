@@ -42,7 +42,7 @@ function ProjectsPage() {
               <img
                 src={p.images[0]}
                 alt={t(p.title)}
-                className="w-full h-[55vh] md:h-[70vh] object-cover transition-transform duration-[1200ms] group-hover:scale-[1.05]"
+                className="h-auto w-full object-contain transition-transform duration-[1200ms] group-hover:scale-[1.05]"
               />
               <div className="pointer-events-none absolute inset-0 flex items-end justify-center bg-gradient-to-t from-black/50 via-black/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100">
                 <span className="serif text-white text-2xl md:text-3xl mb-8 translate-y-3 group-hover:translate-y-0 transition-transform duration-500">

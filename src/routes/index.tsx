@@ -111,7 +111,7 @@ function Index() {
               <img
                 src={p.images[0]}
                 alt={p.title[lang]}
-                className="w-full h-[55vh] md:h-[80vh] object-cover transition-transform duration-[1200ms] group-hover:scale-[1.02]"
+                className="h-auto w-full object-contain transition-transform duration-[1200ms] group-hover:scale-[1.02]"
               />
             </div>
             <div className="mt-5 flex items-baseline justify-between">
