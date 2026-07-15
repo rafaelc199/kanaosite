@@ -65,7 +65,7 @@ export function Lightbox({ images, index, onClose, onIndexChange, alt }: Props) 
         src={images[index]}
         alt={alt ?? ""}
         onClick={(e) => e.stopPropagation()}
-        className="h-[86vh] w-[90vw] object-cover object-center md:h-[90vh] md:w-[92vw]"
+        className="max-h-[86vh] max-w-[90vw] object-contain md:max-h-[90vh] md:max-w-[92vw]"
       />
       <button
         onClick={(e) => {

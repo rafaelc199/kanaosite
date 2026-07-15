@@ -84,7 +84,7 @@ function ProjectDetail() {
           fetchPriority="high"
           decoding="async"
           onClick={() => setLightboxIndex(0)}
-          className="block w-full h-[70vh] md:h-[90vh] object-cover object-center cursor-zoom-in"
+          className="block h-auto w-full cursor-zoom-in"
         />
       </div>
 
@@ -103,7 +103,7 @@ function ProjectDetail() {
             onClick={() => setLightboxIndex(i + 1)}
             loading="lazy"
             decoding="async"
-            className={`block w-full object-cover object-center cursor-zoom-in ${i % 3 === 0 ? "h-[70vh] md:h-[90vh]" : "h-[55vh] md:h-[70vh]"}`}
+            className="block h-auto w-full cursor-zoom-in"
           />
         ))}
       </section>
