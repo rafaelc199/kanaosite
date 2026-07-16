@@ -4,18 +4,16 @@ import { brand, contact } from "../content/site";
 import { useLang } from "../lib/lang";
 import { useServerFn } from "@tanstack/react-start";
 import { sendContactMessage } from "../lib/contact.functions";
+import { canonicalLink, createSeoMeta } from "../lib/seo";
+
+const title = "Contacto — Kanao Design de Interiores";
+const description =
+  "Contacte a Kanao para conversar sobre o seu projeto residencial ou comercial de design de interiores em Portugal.";
 
 export const Route = createFileRoute("/contacto")({
   head: () => ({
-    meta: [
-      { title: "Contacto — Kanao" },
-      {
-        name: "description",
-        content: "Fale connosco sobre o seu projeto de design de interiores.",
-      },
-      { property: "og:title", content: "Contacto — Kanao" },
-      { property: "og:description", content: "Fale connosco sobre o seu projeto." },
-    ],
+    meta: createSeoMeta({ title, description, path: "/contacto" }),
+    links: [canonicalLink("/contacto")],
   }),
   component: ContactPage,
 });

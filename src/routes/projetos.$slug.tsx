@@ -3,6 +3,7 @@ import { projects, type Project } from "../content/site";
 import { useLang } from "../lib/lang";
 import { useState } from "react";
 import { Lightbox } from "../components/Lightbox";
+import { absoluteUrl, canonicalLink, createSeoMeta } from "../lib/seo";
 
 export const Route = createFileRoute("/projetos/$slug")({
   loader: ({ params }) => {
@@ -13,14 +14,38 @@ export const Route = createFileRoute("/projetos/$slug")({
   head: ({ loaderData }) => {
     const p = loaderData?.project;
     const title = p ? `${p.title.pt} — Kanao` : "Projeto — Kanao";
+    const path = p ? `/projetos/${p.slug}` : "/projetos";
     return {
-      meta: [
-        { title },
-        { name: "description", content: p?.description.pt ?? "" },
-        { property: "og:title", content: title },
-        { property: "og:description", content: p?.description.pt ?? "" },
-        { property: "og:image", content: p?.images[0] ?? "" },
-      ],
+      meta: createSeoMeta({
+        title,
+        description: p?.description.pt ?? "Projeto de design de interiores da Kanao.",
+        path,
+        image: p?.images[0],
+        type: "article",
+      }),
+      links: [canonicalLink(path)],
+      scripts: p
+        ? [
+            {
+              type: "application/ld+json",
+              children: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "CreativeWork",
+                name: p.title.pt,
+                description: p.description.pt,
+                url: absoluteUrl(path),
+                image: p.images.map(absoluteUrl),
+                creator: {
+                  "@type": "Organization",
+                  name: "Kanao",
+                  url: absoluteUrl("/"),
+                },
+                locationCreated: p.location.pt,
+                dateCreated: p.year,
+              }),
+            },
+          ]
+        : [],
     };
   },
   notFoundComponent: () => (

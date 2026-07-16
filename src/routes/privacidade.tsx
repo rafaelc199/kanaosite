@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { brand } from "../content/site";
 import { useLang } from "../lib/lang";
+import { absoluteUrl, canonicalLink } from "../lib/seo";
 
 export const Route = createFileRoute("/privacidade")({
   head: () => ({
@@ -12,10 +13,10 @@ export const Route = createFileRoute("/privacidade")({
           "Política de privacidade e cookies do estúdio Kanao. Informação sobre tratamento de dados pessoais em conformidade com o RGPD.",
       },
       { property: "og:title", content: "Privacidade — Kanao" },
-      { property: "og:url", content: "/privacidade" },
-      { name: "robots", content: "noindex" },
+      { property: "og:url", content: absoluteUrl("/privacidade") },
+      { name: "robots", content: "noindex, follow" },
     ],
-    links: [{ rel: "canonical", href: "/privacidade" }],
+    links: [canonicalLink("/privacidade")],
   }),
   component: PrivacyPage,
 });

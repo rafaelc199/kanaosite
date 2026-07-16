@@ -1,18 +1,16 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { projects } from "../content/site";
 import { useLang } from "../lib/lang";
+import { canonicalLink, createSeoMeta } from "../lib/seo";
+
+const title = "Projetos de Design de Interiores — Kanao";
+const description =
+  "Conheça o portfólio da Kanao: projetos residenciais de design de interiores em Marco de Canaveses, Vila Nova de Gaia e outras regiões de Portugal.";
 
 export const Route = createFileRoute("/projetos/")({
   head: () => ({
-    meta: [
-      { title: "Projetos — Kanao" },
-      {
-        name: "description",
-        content: "Portfólio de projetos de design de interiores do estúdio Kanao.",
-      },
-      { property: "og:title", content: "Projetos — Kanao" },
-      { property: "og:description", content: "Portfólio de projetos de design de interiores." },
-    ],
+    meta: createSeoMeta({ title, description, path: "/projetos" }),
+    links: [canonicalLink("/projetos")],
   }),
   component: ProjectsPage,
 });

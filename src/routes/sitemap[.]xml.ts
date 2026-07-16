@@ -1,9 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 import { projects } from "../content/site";
-
-// TODO: definir domínio final quando publicado (ex.: "https://kanao.pt")
-const BASE_URL = "";
+import { absoluteUrl } from "../lib/seo";
 
 interface SitemapEntry {
   path: string;
@@ -20,7 +18,6 @@ export const Route = createFileRoute("/sitemap.xml")({
           { path: "/projetos", changefreq: "monthly", priority: "0.9" },
           { path: "/estudio", changefreq: "yearly", priority: "0.7" },
           { path: "/contacto", changefreq: "yearly", priority: "0.7" },
-          { path: "/privacidade", changefreq: "yearly", priority: "0.3" },
         ];
 
         const projectEntries: SitemapEntry[] = projects.map((p) => ({
@@ -32,7 +29,7 @@ export const Route = createFileRoute("/sitemap.xml")({
         const urls = [...staticEntries, ...projectEntries].map((e) =>
           [
             `  <url>`,
-            `    <loc>${BASE_URL}${e.path}</loc>`,
+            `    <loc>${absoluteUrl(e.path)}</loc>`,
             e.changefreq ? `    <changefreq>${e.changefreq}</changefreq>` : null,
             e.priority ? `    <priority>${e.priority}</priority>` : null,
             `  </url>`,
