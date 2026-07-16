@@ -4,7 +4,7 @@ export const projects: Project[] = [
   {
     slug: "vg",
     title: { pt: "Casa VG", en: "Casa VG" },
-    location: { pt: "Portugal", en: "Portugal" },
+    location: { pt: "Marco de Canaveses, Portugal", en: "Marco de Canaveses, Portugal" },
     year: "2024",
     category: { pt: "Residencial", en: "Residential" },
     description: {
@@ -14,7 +14,6 @@ export const projects: Project[] = [
     images: [
       "/images/casa-vg/capa.jpg",
       "/images/casa-vg/02.jpg",
-      "/images/casa-vg/16.jpg",
       "/images/casa-vg/04.jpg",
       "/images/casa-vg/05.jpg",
       "/images/casa-vg/08.jpg",
@@ -23,19 +22,20 @@ export const projects: Project[] = [
       "/images/casa-vg/12.jpg",
       "/images/casa-vg/14.jpg",
       "/images/casa-vg/15.jpg",
+      "/images/casa-vg/16.jpg",
+      "/images/casa-vg/18.jpg",
       "/images/casa-vg/19.jpg",
       "/images/casa-vg/20.jpg",
+      "/images/casa-vg/21.jpg",
       "/images/casa-vg/23.jpg",
       "/images/casa-vg/26.jpg",
-      "/images/casa-vg/18.jpg",
-      "/images/casa-vg/21.jpg",
       "/images/casa-vg/27.jpg",
     ],
   },
   {
     slug: "casa-sn",
     title: { pt: "Casa SN", en: "Casa SN" },
-    location: { pt: "Portugal", en: "Portugal" },
+    location: { pt: "Marco de Canaveses, Portugal", en: "Marco de Canaveses, Portugal" },
     year: "2024",
     category: { pt: "Residencial", en: "Residential" },
     description: {
@@ -62,7 +62,7 @@ export const projects: Project[] = [
   {
     slug: "tp",
     title: { pt: "Projeto PP", en: "Project PP" },
-    location: { pt: "Portugal", en: "Portugal" },
+    location: { pt: "Marco de Canaveses, Portugal", en: "Marco de Canaveses, Portugal" },
     year: "2024",
     category: { pt: "Residencial", en: "Residential" },
     description: {
@@ -90,7 +90,7 @@ export const projects: Project[] = [
   {
     slug: "sao-paio-apartments",
     title: { pt: "São Paio Apartments", en: "São Paio Apartments" },
-    location: { pt: "Porto, Portugal", en: "Porto, Portugal" },
+    location: { pt: "Vila Nova de Gaia, Portugal", en: "Vila Nova de Gaia, Portugal" },
     year: "2024",
     category: { pt: "Residencial", en: "Residential" },
     description: {
