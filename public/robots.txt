@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://kanaosite.vercel.app/sitemap.xml
+Sitemap: https://www.kanaointeriordesign.pt/sitemap.xml

@@ -1,4 +1,4 @@
-export const SITE_URL = "https://kanaosite.vercel.app";
+export const SITE_URL = "https://www.kanaointeriordesign.pt";
 
 export const DEFAULT_TITLE = "Kanao — Design de Interiores";
 export const DEFAULT_DESCRIPTION =
