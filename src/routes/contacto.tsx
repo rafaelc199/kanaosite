@@ -46,12 +46,6 @@ function ContactPage() {
           </div>
           <div>
             <p className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground mb-2">
-              {t({ pt: "Telefone", en: "Phone" })}
-            </p>
-            <p>{brand.phone}</p>
-          </div>
-          <div>
-            <p className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground mb-2">
               {t({ pt: "Estúdio", en: "Studio" })}
             </p>
             <p>{t(brand.address)}</p>

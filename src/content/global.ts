@@ -6,8 +6,7 @@ export const brand = {
     pt: "Estúdio de Design de Interiores",
     en: "Interior Design Studio",
   },
-  email: "kanao.interiordesign@gmail.com",
-  phone: "+351 919 933 607",
+  email: "kanao.interiordesign@gmail.com",  
   address: {
     pt: "Marco de Canaveses, Porto, Portugal",
     en: "Marco de Canaveses, Porto, Portugal",

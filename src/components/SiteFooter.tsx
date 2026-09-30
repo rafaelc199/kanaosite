@@ -34,13 +34,6 @@ export function SiteFooter() {
                 kanao.interiordesign@gmail.com
               </a>
 
-              <a
-                href={`tel:${brand.phone.replace(/\s/g, "")}`}
-                className="block transition hover:text-white"
-              >
-                {brand.phone}
-              </a>
-
               <p className="text-white/70">
                 {t(brand.address)}
               </p>

@@ -87,7 +87,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       image: absoluteUrl(DEFAULT_SOCIAL_IMAGE),
       description: DEFAULT_DESCRIPTION,
       email: brand.email,
-      telephone: brand.phone.replaceAll(" ", ""),
       address: {
         "@type": "PostalAddress",
         addressLocality: "Marco de Canaveses",
