@@ -2,6 +2,35 @@ import type { Project } from "./types";
 
 export const projects: Project[] = [
   {
+    slug: "casa-f",
+    title: { pt: "Casa F", en: "Casa F" },
+    location: { pt: "Marco de Canaveses, Portugal", en: "Marco de Canaveses, Portugal" },
+    category: { pt: "Residencial", en: "Residential" },
+    description: {
+      pt: "Projeto residencial contemporâneo, marcado por uma paleta de tons areia e madeira escura. A cozinha e a sala articulam-se num espaço amplo e luminoso; nos quartos e casas de banho, a iluminação indireta e os materiais naturais reforçam uma atmosfera tranquila.",
+      en: "A contemporary residential project defined by a palette of sand tones and dark wood. The kitchen and living areas flow through a generous, light-filled space, while indirect lighting and natural materials bring a calm atmosphere to the bedrooms and bathrooms.",
+    },
+    images: [
+      "/images/casa-f/capa.jpg",
+      "/images/casa-f/02.jpg",
+      "/images/casa-f/03.jpg",
+      "/images/casa-f/04.jpg",
+      "/images/casa-f/05.jpg",
+      "/images/casa-f/06.jpg",
+      "/images/casa-f/07.jpg",
+      "/images/casa-f/08.jpg",
+      "/images/casa-f/09.jpg",
+      "/images/casa-f/10.jpg",
+      "/images/casa-f/11.jpg",
+      "/images/casa-f/12.jpg",
+      "/images/casa-f/13.jpg",
+      "/images/casa-f/14.jpg",
+      "/images/casa-f/15.jpg",
+      "/images/casa-f/16.jpg",
+      "/images/casa-f/17.jpg",
+    ],
+  },
+  {
     slug: "vg",
     title: { pt: "Casa VG", en: "Casa VG" },
     location: { pt: "Marco de Canaveses, Portugal", en: "Marco de Canaveses, Portugal" },

@@ -115,9 +115,11 @@ function Index() {
                   {t(p.location)} · {t(p.category)}
                 </p>
               </div>
-              <span className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
-                {p.year}
-              </span>
+              {p.year && (
+                <span className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+                  {p.year}
+                </span>
+              )}
             </div>
           </Link>
         ))}
