@@ -7,10 +7,11 @@ import { canonicalLink, createSeoMeta } from "../lib/seo";
 const title = "Kanao — Design de Interiores em Portugal";
 const description =
   "Estúdio de design de interiores em Marco de Canaveses. Projetos residenciais e comerciais em Portugal, da conceção à obra.";
+const heroImage = "/images/casa-vg/capa.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
-    meta: createSeoMeta({ title, description, path: "/", image: projects[0]?.images[0] }),
+    meta: createSeoMeta({ title, description, path: "/", image: heroImage }),
     links: [canonicalLink("/")],
   }),
   component: Index,
@@ -51,8 +52,8 @@ function Index() {
       {/* HERO IMAGE */}
       <section className="mx-auto max-w-[1600px] px-6 md:px-10">
         <img
-          src={projects[0].images[0]}
-          alt={t(projects[0].title)}
+          src={heroImage}
+          alt={t({ pt: "Hall de entrada da Casa VG", en: "Casa VG entrance hall" })}
           className="w-full h-[60vh] md:h-[85vh] object-cover"
         />
       </section>
