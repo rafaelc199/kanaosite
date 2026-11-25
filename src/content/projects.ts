@@ -11,8 +11,8 @@ export const projects: Project[] = [
       en: "A contemporary residential project defined by a palette of sand tones and dark wood. The kitchen and living areas flow through a generous, light-filled space, while indirect lighting and natural materials bring a calm atmosphere to the bedrooms and bathrooms.",
     },
     images: [
-      "/images/casa-f/capa.jpg",
       "/images/casa-f/02.jpg",
+      "/images/casa-f/capa.jpg",
       "/images/casa-f/03.jpg",
       "/images/casa-f/04.jpg",
       "/images/casa-f/05.jpg",
